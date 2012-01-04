@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from fts.plugins.interface import BootPlugin
+from fts.bootplugin import BootPlugin
 from clacks.common.components import AMQPServiceProxy
 
 

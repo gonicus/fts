@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "fts.plugins.clacks",
+    name = "fts-clacks",
     version = "1.0",
     author = "Jan Wenzel",
     author_email = "wenzel@gonicus.de",
@@ -27,7 +27,6 @@ setup(
 
     download_url = "http://oss.gonicus.de/pub/gosa",
     packages = find_packages('src', exclude=['examples', 'tests']),
-    namespace_packages = ['fts'],
     package_dir={'': 'src'},
 
     include_package_data = True,
@@ -43,6 +42,6 @@ setup(
 
     entry_points = """
     [fts.plugin]
-    clacks = fts.plugins.clacks.main:ClacksBoot
+    clacks = clacks.main:ClacksBoot
 """,
 )

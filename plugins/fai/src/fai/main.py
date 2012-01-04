@@ -3,7 +3,7 @@ import ldap
 import ldap.filter
 import syslog
 from fts.ldap_utils import LDAPHandler
-from fts.plugins.interface import BootPlugin
+from fts.bootplugin import BootPlugin
 
 
 class FAIBoot(BootPlugin):

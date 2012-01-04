@@ -7,7 +7,7 @@ import syslog
 import pkg_resources
 from time import time
 from fts import Config, FileStat
-from fts.plugins.interface import BootPlugin
+from fts.bootplugin import BootPlugin
 
 
 macaddress = re.compile("^[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}$", re.IGNORECASE)
