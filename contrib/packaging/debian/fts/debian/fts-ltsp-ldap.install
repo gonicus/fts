@@ -1,3 +1,1 @@
-usr/lib/python*/dist-packages/fts/plugins/ltsp
-usr/lib/python*/dist-packages/fts.plugins.ltsp-*.egg-info
-usr/lib/python*/dist-packages/fts.plugins.ltsp-*-nspkg.pth
+usr/lib/python*/dist-packages/fts_ltsp*

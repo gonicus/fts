@@ -1,3 +1,1 @@
-usr/lib/python*/dist-packages/fts/plugins/opsi
-usr/lib/python*/dist-packages/fts.plugins.opsi-*.egg-info
-usr/lib/python*/dist-packages/fts.plugins.opsi-*-nspkg.pth
+usr/lib/python*/dist-packages/fts_opsi*

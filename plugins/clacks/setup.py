@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "fts-clacks",
+    name = "fts_clacks",
     version = "1.0",
     author = "Jan Wenzel",
     author_email = "wenzel@gonicus.de",

@@ -1,3 +1,1 @@
-usr/lib/python*/dist-packages/fts/plugins/fai
-usr/lib/python*/dist-packages/fts.plugins.fai-*.egg-info
-usr/lib/python*/dist-packages/fts.plugins.fai-*-nspkg.pth
+usr/lib/python*/dist-packages/fts_fai*
