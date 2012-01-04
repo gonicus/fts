@@ -1,0 +1,42 @@
+# translation of fr.po to
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Benoit Mortier <benoit.mortier@opensides.be>, 2010.
+# Christian Perrier <bubulle@debian.org>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: fr\n"
+"Report-Msgid-Bugs-To: fts@packages.debian.org\n"
+"POT-Creation-Date: 2011-04-27 14:29+0200\n"
+"PO-Revision-Date: 2011-04-29 22:11+0200\n"
+"Last-Translator: Christian Perrier <bubulle@debian.org>\n"
+"Language-Team: French <debian-l10n-french@lists.debian.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms:  nplurals=2; plural=(n > 1);\n"
+
+#. Type: string
+#. Description
+#: ../fts.templates:1001
+#| msgid "Base directory for the tftp files:"
+msgid "Base directory for the TFTP files:"
+msgstr "Répertoire de base pour les fichiers TFTP :"
+
+#. Type: string
+#. Description
+#: ../fts.templates:1001
+#| msgid ""
+#| "The config directory for tftp is where the pxelinux.0 image lies. This "
+#| "must be in sync with your TFTP Server"
+msgid ""
+"Please note that the configuration directory for TFTP is the one that "
+"usually contains the pxelinux.0 file. It has to be configured to the same "
+"value that is used by your TFTP server."
+msgstr ""
+"Le répertoire configuré pour TFTP est l'endroit où se trouve le fichier "
+"pxelinux.0. Ce répertoire doit être synchronisé avec celui réglé pour le "
+"serveur TFTP."

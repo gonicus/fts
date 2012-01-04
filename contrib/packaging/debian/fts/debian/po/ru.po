@@ -1,0 +1,42 @@
+# translation of fts_0.1-1_ru.po to Russian
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the fts package.
+#
+# Yuri Kozlov <yuray@komyakino.ru>, 2010, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: fts 0.1-5\n"
+"Report-Msgid-Bugs-To: fts@packages.debian.org\n"
+"POT-Creation-Date: 2011-04-27 14:29+0200\n"
+"PO-Revision-Date: 2011-05-02 22:22+0400\n"
+"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Type: string
+#. Description
+#: ../fts.templates:1001
+#| msgid "Base directory for the tftp files:"
+msgid "Base directory for the TFTP files:"
+msgstr "Базовый каталог для файлов TFTP:"
+
+#. Type: string
+#. Description
+#: ../fts.templates:1001
+#| msgid ""
+#| "The config directory for tftp is where the pxelinux.0 image lies. This "
+#| "must be in sync with your TFTP Server"
+msgid ""
+"Please note that the configuration directory for TFTP is the one that "
+"usually contains the pxelinux.0 file. It has to be configured to the same "
+"value that is used by your TFTP server."
+msgstr ""
+"Укажите каталог TFTP, где обычно располагается образ pxelinux.0. "
+"Он должен быть тем же, что у установленного сервера TFTP."
+
