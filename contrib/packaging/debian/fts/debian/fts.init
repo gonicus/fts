@@ -18,6 +18,7 @@ DESC="TFTP supplicant"
 SERVICE="fts"
 SCRIPTNAME=/etc/init.d/fts
 CONFIG=/etc/fts/config
+DAEMON_USER=tftpd
 
 
 mount_path() {
@@ -43,7 +44,7 @@ start_service() {
         fi
 
         start-stop-daemon --start --quiet --pidfile $PIDFILE \
-            --exec /usr/sbin/$SERVICE -- --config $CONFIG
+            --user $DAEMON_USER --exec /usr/sbin/$SERVICE -- --config $CONFIG
 }
 
 

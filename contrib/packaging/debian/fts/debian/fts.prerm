@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+#DEBHELPER#
+
+if [ "$1" = "purge" ] ; then
+    deluser --quiet --system tftpd > /dev/null || true
+    delgroup --quiet --system tftpd > /dev/null || true
+
+    if [ -d "/etc/fts" ]; then
+        rmdir "$f" || { chown root:root "$f" && chmod 00700 "$f"; }
+    fi
+fi
+

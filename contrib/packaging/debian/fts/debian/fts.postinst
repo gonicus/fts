@@ -11,10 +11,14 @@ case "$1" in
 	tftppath="$RET"
 	
 	# Create user
-	if ! getent passwd | grep -q "tftpd"
-	then
-		adduser --group --system tftpd
-	fi
+        if ! getent passwd tftpd >/dev/null; then
+            adduser --disabled-password \
+                    --quiet --system \
+                    --home $tftppath \
+                    --no-create-home \
+                    --gecos "TFTP account" \
+                    --group tftpd
+        fi
 
 	# Create pxelinux.cfg path
 	[ ! -d "$tftppath/pxelinux.cfg" ] && mkdir -p "$tftppath/pxelinux.cfg"
@@ -33,6 +37,15 @@ case "$1" in
 	ucf --three-way --debconf-ok /etc/fts/config.debconf-tmp /etc/fts/config
 	rm -f /etc/fts/config.debconf-tmp || true
 	;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+
 esac
 
 #DEBHELPER#

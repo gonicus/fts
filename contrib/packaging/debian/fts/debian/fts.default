@@ -1,0 +1,6 @@
+# Tell fts to use a different configuration file than
+# the default.
+#CONFIG=/etc/fts/config
+
+# Start the fts process as a custom user.
+#DAEMON_USER=tftpd
