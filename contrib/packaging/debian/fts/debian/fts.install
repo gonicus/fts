@@ -1,5 +1,4 @@
 usr/bin/fts usr/sbin
 usr/lib/python*/dist-packages/fts
 usr/lib/python*/dist-packages/fts-*.egg-info
-usr/lib/python*/dist-packages/fts-*-nspkg.pth
 ../rsyslog/fts.conf /etc/rsyslog.d
