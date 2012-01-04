@@ -17,8 +17,8 @@ class PXEfs(fuse.Fuse):
 
     def __init__(self, *args, **kw):
         config = Config.get_instance()
-        self.static_path = config.get('pxe.static-path', '/tftpboot/pxelinux.static')
-        self.cfg_path = config.get('pxe.path', '/tftpboot/pxelinux.cfg')
+        self.static_path = config.get('tftp.static-path', '/tftpboot/pxelinux.static')
+        self.cfg_path = config.get('tftp.path', '/tftpboot/pxelinux.cfg')
 
         # Sanity checks
         if not os.access(self.cfg_path, os.F_OK):

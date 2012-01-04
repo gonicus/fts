@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "fts.clacks",
+    name = "fts.plugins.clacks",
     version = "1.0",
     author = "Jan Wenzel",
     author_email = "wenzel@gonicus.de",
@@ -43,6 +43,6 @@ setup(
 
     entry_points = """
     [fts.plugin]
-    clacks = fts.clacks.main:ClacksBoot
+    clacks = fts.plugins.clacks.main:ClacksBoot
 """,
 )

@@ -1,0 +1,41 @@
+# ITALIAN TRANSLATION OF FTS' PO-DEBCONF FILE.
+# COPYRIGHT (C) 2010 THE FTS' COPYRIGHT HOLDER
+# This file is distributed under the same license as the fts package.
+# Vincenzo Campanella <vinz65@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fts 0.1-1\n"
+"Report-Msgid-Bugs-To: fts@packages.debian.org\n"
+"POT-Creation-Date: 2011-04-27 14:29+0200\n"
+"PO-Revision-Date: 2010-02-13 16:18+0100\n"
+"Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: string
+#. Description
+#: ../fts.templates:1001
+#, fuzzy
+#| msgid "Base directory for the tftp-daemon:"
+msgid "Base directory for the TFTP files:"
+msgstr "Directory di base per il demone TFTP:"
+
+#. Type: string
+#. Description
+#: ../fts.templates:1001
+msgid ""
+"Please note that the configuration directory for TFTP is the one that "
+"usually contains the pxelinux.0 file. It has to be configured to the same "
+"value that is used by your TFTP server."
+msgstr ""
+
+#~ msgid ""
+#~ "The base directory for TFTP is the root dir for served files. The default "
+#~ "should be good for everyone."
+#~ msgstr ""
+#~ "La directory di base per TFTP è la radice per i file serviti. Quella "
+#~ "predefinita dovrebbe essere accessibile a tutti."
