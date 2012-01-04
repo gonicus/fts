@@ -1,0 +1,7 @@
+*.pyc
+*egg*
+nohup.out
+nosetests.xml
+*.swp
+.coverage
+reports

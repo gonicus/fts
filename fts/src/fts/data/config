@@ -1,0 +1,3 @@
+[pxe]
+path = /tftpboot/pxelinux.cfg
+static-path =  /tftpboot/pxelinux.static
