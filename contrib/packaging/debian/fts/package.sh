@@ -1,6 +1,6 @@
 #!/bin/sh
 NAME=fts
-VERSION=`parsechangelog | sed -n 's/^Version:\s*//p'`
+VERSION=`parsechangelog | sed -n 's/^Version:\s*\(.*\)-[0-9][0-9]*$/\1/p'`
 
 #----
 
