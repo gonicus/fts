@@ -18,6 +18,7 @@ case "$1" in
                     --no-create-home \
                     --gecos "TFTP account" \
                     --group tftpd
+	    adduser tftpd fuse
         fi
 
 	# Create pxelinux.cfg path
