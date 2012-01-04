@@ -15,14 +15,14 @@ class BootPlugin(object):
 
     def getBootParams(self, address):
         """
-        This method tries to find a propper boot configuration for the given
+        This method tries to find a proper boot configuration for the given
         address. If the address is no candidate for the current plugin, it
         should return '''None'''.
 
         ========= ============================================================
         Parameter Description
         ========= ============================================================
-        address   Case insensitive MAC address, separator is "-"
+        address   Case insensitive MAC address, separator is ":"
         ========= ============================================================
 
         ``Return``: String or None
