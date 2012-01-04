@@ -1,0 +1,108 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          fts
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Stop:     $local_fs $remote_fs $network
+# Should-Start:	     $syslog
+# Should-Stop:       $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Modular TFTP/Fuse supplicant
+# Description:       TODO
+### END INIT INFO
+
+set -e
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DESC="TFTP supplicant"
+SERVICE="fts"
+SCRIPTNAME=/etc/init.d/fts
+CONFIG=/etc/fts/config
+
+
+mount_path() {
+	sed -e 's/[[:space:]]*\=[[:space:]]*/=/g' \
+            -e 's/;.*$//' \
+            -e 's/[[:space:]]*$//' \
+            -e 's/^[[:space:]]*//' \
+            -e "s/^\(.*\)=\([^\"']*\)$/\1=\"\2\"/" $CONFIG | \
+	    sed -n -e "/^\[[Tt][Ff][Tt][Pp]\]/,/^\s*\[/{/^[^;].*\=.*/p;}" | \
+	    sed -n -e 's/^path="\(.*\)"$/\1/p'
+}
+
+
+start_service() {
+        PIDFILE=/var/run/$SERVICE.pid
+        PID=$(pgrep $SERVICE)
+
+        if [ -e $PIDFILE ]; then
+            if [ "x$PID" = "x$(cat $PIDFILE)" ]; then
+                log_progress_msg "already running"
+                return
+            fi
+        fi
+
+        start-stop-daemon --start --quiet --pidfile $PIDFILE \
+            --exec /usr/sbin/$SERVICE -- --config $CONFIG
+}
+
+
+stop_service() {
+	LC_ALL=C mount | grep -q "^$SERVICE on" || return
+	PIDFILE=/var/run/$SERVICE.pid
+	fusermount -u "$MOUNTPOINT"
+	rm -f $PIDFILE
+}
+
+
+# Gracefully exit if the package has been removed.
+test -x /usr/sbin/$SERVICE || exit 0
+
+. /lib/lsb/init-functions
+
+# Include defaults if available.
+test -f /etc/default/$SERVICE && . /etc/default/$SERVICE
+
+case "$1" in
+    start)
+        # If we've no configuration now, stop more or less silently
+        if [ ! -e $CONFIG ]; then
+            echo ""
+            echo "fts is not configured, please create $CONFIG to enable"
+            exit 0
+        fi
+
+        log_daemon_msg "Starting $DESC"
+        log_progress_msg "$SERVICE"
+        start_service
+        log_end_msg $?
+        ;;
+
+    stop)
+        if [ ! -e $CONFIG ]; then
+            echo ""
+            echo "fts is not configured, please create $CONFIG to enable"
+            exit 0
+        fi
+
+        log_daemon_msg "Stopping $DESC"
+        stop_service
+        log_progress_msg "$SERVICE"
+        log_end_msg $?
+        ;;
+
+    restart|force-reload)
+        log_daemon_msg "Restarting $DESC"
+        log_progress_msg "$SERVICE"
+        stop_service
+        start_service
+        log_end_msg $?
+        ;;
+
+    *)
+        echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

@@ -1,0 +1,13 @@
+If you need to create a debian package of the current GIT tree, please
+call the "package.sh" script. This one creates the .orig.tar.gz, the
+debian.tar.gz and the .dsc files. Additionally it leaves the unpacked
+source like you're know it from "apt-get source foo", etc.
+
+If you have no sbuild or related service, you may want to call something
+like
+
+  dpkg-buildpackage -us -uc -rfakeroot
+
+inside of the create source directory (i.e. fts-1.0) in order to
+build the packages. After the build, they're placed in the directory
+where this README file is located.

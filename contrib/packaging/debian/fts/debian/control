@@ -1,0 +1,67 @@
+Source: fts
+Section: misc
+Priority: optional
+Maintainer: Cajus Pollmeier <cajus@debian.org>
+Build-Depends: debhelper (>= 7), python (>= 2.6.6-3~), python-setuptools
+X-Python-Version: >= 2.6
+Standards-Version: 3.9.1
+Homepage: http://gosa-project.org
+
+Package: fts
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, python-fuse, fuse
+Recommends: tftpd | atftpd | tftpd-hpa
+Description: Modular TFTP/Fuse supplicant
+ FTS is a modular fuse-tftp-supplicant which allows to create
+ pxelinux configurations for different types of clients
+ using external modules on the fly.
+ . 
+ It ships with modules for FAI (Fully automated install),
+ OPSI (OpenPc integration), LTSP5 (Linux Terminal server project)
+ and the clacks infrastructure daemon.
+ .
+ This package provides the main FUSE filesystem.
+
+Package: fts-fai-ldap
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
+Description: LDAP FAI module for the TFTP/Fuse supplicant
+ FTS is a modular fuse-tftp-supplicant which allows to create 
+ pxelinux configurations for different types of clients
+ using external modules on the fly.
+ .
+ This package provides the FAI module for FTS which is using the
+ LDAP backend in conjunction with GOsa and GOto to generate client
+ configurations.
+
+Package: fts-clacks
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, fts, clacks-common
+Description: Clacks module for the TFTP/Fuse supplicant
+ FTS is a modular fuse-tftp-supplicant which allows to create 
+ pxelinux configurations for different types of clients
+ using external modules on the fly.
+ .
+ This package provides the Clacks module for FTS.
+
+#Package: fts-ltsp-ldap
+#Architecture: all
+#Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
+#Description: LDAP LTSP module for the TFTP/Fuse supplicant
+# FTS is a modular fuse-tftp-supplicant which allows to create 
+# pxelinux configurations for different types of clients
+# using external modules on the fly.
+# .
+# This package provides the LTSP5 module for FTS which is using the
+# LDAP backend in conjunction with GOsa and GOto to generate client
+# configurations.
+#
+#Package: fts-opsi
+#Architecture: all
+#Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
+#Description: LDAP LTSP module for the TFTP/Fuse supplicant
+# FTS is a modular fuse-tftp-supplicant which allows to create 
+# pxelinux configurations for different types of clients
+# using external modules on the fly.
+# .
+# This package provides the OPSI module for FTS.
