@@ -33,27 +33,20 @@ mount_path() {
 
 
 start_service() {
-        PIDFILE=/var/run/$SERVICE.pid
-        PID=$(pgrep $SERVICE)
-
-        if [ -e $PIDFILE ]; then
-            if [ "x$PID" = "x$(cat $PIDFILE)" ]; then
-                log_progress_msg "already running"
-                return
-            fi
+	if LC_ALL=C mount | grep -q "^$SERVICE on"; then
+            log_progress_msg "already running"
+            return
         fi
 
-        start-stop-daemon --start --quiet --pidfile $PIDFILE \
-            --user $DAEMON_USER --exec /usr/sbin/$SERVICE
+        start-stop-daemon --start --quiet --chuid $DAEMON_USER \
+		--exec /usr/sbin/$SERVICE -- --config $CONFIG
 }
 
 
 stop_service() {
-	PIDFILE=/var/run/$SERVICE.pid
 	if LC_ALL=C mount | grep -q "^$SERVICE on"; then
 		fusermount -u "$(mount_path)"
 	fi
-	rm -f $PIDFILE
 }
 
 

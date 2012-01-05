@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import argparse
 import ConfigParser
 
@@ -20,11 +21,21 @@ addresses.""",
         parser.add_argument('--config', '-c',
             metavar='FILE',
             help='path to the configuration file', default="/etc/fts/config")
+        parser.add_argument('--foreground', '-f',
+            action='store_true', help='path to the configuration file')
 
         cli_opts = parser.parse_args()
         config = ConfigParser.ConfigParser()
         config.read(cli_opts.config)
+        if not config.has_section('core'):
+            config.add_section('core')
+        if cli_opts.foreground:
+            config.set('core', 'foreground', 'True')
+
         self.__config = config
+
+        # Reset command line
+        sys.argv = [sys.argv[0]]
 
     def get(self, path, default=None):
         section, key = path.split(".")[0:2]

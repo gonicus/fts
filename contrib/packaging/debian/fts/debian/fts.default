@@ -1,2 +1,5 @@
 # Start the fts process as a custom user.
 #DAEMON_USER=tftpd
+
+# Use an alternate configuration file.
+#CONFIG=/etc/fts/config

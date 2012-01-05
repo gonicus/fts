@@ -31,6 +31,10 @@ class PXEfs(fuse.Fuse):
         # Inject mount point
         fa = fuse.FuseArgs()
         fa.mountpoint = self.cfg_path
+        fa.add('allow_other')
+        if config.get('core.foreground', 'False') == 'True':
+            fa.setmod('foreground')
+
         kw['fuse_args'] = fa
 
         fuse.Fuse.__init__(self, *args, **kw)
