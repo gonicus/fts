@@ -32,6 +32,7 @@ class PXEfs(fuse.Fuse):
         fa = fuse.FuseArgs()
         fa.mountpoint = self.cfg_path
         fa.add('allow_other')
+        fa.add('nonempty')
         if config.get('core.foreground', 'False') == 'True':
             fa.setmod('foreground')
 

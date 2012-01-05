@@ -18,7 +18,7 @@ DESC="TFTP supplicant"
 SERVICE="fts"
 SCRIPTNAME=/etc/init.d/fts
 CONFIG=/etc/fts/config
-DAEMON_USER=tftpd
+DAEMON_USER=
 
 
 mount_path() {
@@ -38,8 +38,13 @@ start_service() {
             return
         fi
 
-        start-stop-daemon --start --quiet --chuid $DAEMON_USER \
+	if ! test -z "$DAEMON_USER"; then
+            start-stop-daemon --start --quiet --chuid $DAEMON_USER \
 		--exec /usr/sbin/$SERVICE -- --config $CONFIG
+        else
+            start-stop-daemon --start --quiet \
+		--exec /usr/sbin/$SERVICE -- --config $CONFIG
+        fi
 }
 
 
@@ -63,9 +68,22 @@ case "$1" in
         # If we've no configuration now, stop more or less silently
         if [ ! -e $CONFIG ]; then
             echo ""
-            echo "fts is not configured, please create $CONFIG to enable"
+            echo "fts is not configured: please create $CONFIG to enable"
             exit 0
         fi
+
+	if ! test -z "$DAEMON_USER"; then
+            if ! getent group fuse | grep -q "[,:]$DAEMON_USER\(,\|$\)"; then
+                echo ""
+                echo "fts is not configured: please add the user $DAEMON_USER to the fuse group"
+                exit 0
+            fi
+	    if ! grep -q '^[^#]*\s*user_allow_other\s*$' /etc/fuse.conf; then
+                echo ""
+                echo "fts is not configured: please add the 'user_allow_other' option to /etc/fuse.conf"
+                exit 0
+	    fi
+	fi
 
         log_daemon_msg "Starting $DESC"
         log_progress_msg "$SERVICE"
