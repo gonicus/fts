@@ -3,6 +3,7 @@ import ldap
 import ldap.filter
 import os
 import syslog
+import re
 from fts.ldap_utils import LDAPHandler
 from fts.bootplugin import BootPlugin
 
@@ -91,6 +92,8 @@ class FAIBoot(BootPlugin):
                         return None
 
                     #TODO: Strip ldap parameter and all multiple and trailing spaces
+                    cmdline = re.sub(r'ldap(=[^\s]*[\s]*|[\s]*$|\s+)', '', cmdline)
+                    cmdline = re.sub(r'\s[\s]+', '', cmdline.strip())
 
                     # Get kernel and initrd from TFTP root
 
@@ -128,15 +131,21 @@ class FAIBoot(BootPlugin):
                     if status in ['install', 'install-init']:
                         cmdline = cmdline + " FAI_ACTION=install FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=self.fai_flags) \
                                  + " devfs=nomount root=/dev/nfs boot=live union={union}".format(union=self.union)
-                    #TODO: FAIError
-                    #elif status in ['error', 'installing']:
-                    #    cmdline = cmdline + " FAI_ACTION=install FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=self.fai_flags) \
-                    #            " devfs=nomount root=/dev/nfs boot=live union={union} faierror:{fai".format(union=self.union)
+                    elif status.startswith('error:') or status.startswith('installing:'):
+                        faierror = ""
+                        if status.startswith("installing:"):
+                            faierror = "inst-"
+                        faierror = faierror + status.split(":", 1)[1]
+                        cmdline = cmdline + " FAI_ACTION=install FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=self.fai_flags) \
+                                + " devfs=nomount root=/dev/nfs boot=live union={union} faierror:{faierror}".format(union=self.union, faierror=faierror)
                     elif status in ['softupdate', 'localboot']:
                         kernel = 'localboot 0'
                         cmdline = ''
-                    #TODO: sysinfo
-                    #elif status == 'sysinfo':
+                    elif status == 'sysinfo':
+                        def f(x): return x.strip() != "reboot"
+                        sysflags = ','.join(filter(f, self.fai_flags.split(',')))
+                        cmdline = cmdline + " FAI_ACTION=sysinfo FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=sysflags) \
+                                 + " devfs=nomount root=/dev/nfs boot=live union={union}".format(union=self.union)
                     else:
                         # Unknown status
                         syslog.syslog(syslog.LOG_ERR, "{hostname} - unknown FAIstate: {status}".format(hostname=hostname, status=status))
