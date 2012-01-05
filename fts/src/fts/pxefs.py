@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
+import errno
+import fuse
 import os
+import pkg_resources
 import re
 import stat
-import fuse
 import syslog
-import pkg_resources
+
 from time import time
 from fts import Config, FileStat
 from fts.bootplugin import BootPlugin
 
-
 macaddress = re.compile("^[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}$", re.IGNORECASE)
-
 
 class PXEfs(fuse.Fuse):
 
@@ -65,9 +65,14 @@ class PXEfs(fuse.Fuse):
         elif os.path.exists(os.sep.join((self.static_path, path))):
             result = os.stat(os.sep.join((self.static_path, path)))
         else:
-            result.st_mode = stat.S_IFREG | 0666
-            result.st_nlink = 1
-            result.st_size = self.getSize(path)
+            size = self.getSize(path)
+            if size > 0:
+                result.st_mode = stat.S_IFREG | 0666
+                result.st_nlink = 1
+                result.st_size = size
+            else:
+                # File does not exist
+                return -errno.ENOENT
         return result
 
     def read(self, path, size, offset):
@@ -98,7 +103,7 @@ class PXEfs(fuse.Fuse):
         result = 0
         if os.path.exists(os.sep.join((self.static_path, path))):
             result = os.path.getsize(os.sep.join((self.static_path, path)))
-        elif macaddress.match(path[4:]):
+        elif macaddress.match(path[4:]) and self.getBootParams(path) is not None:
             result = len(self.getBootParams(path))
         elif path.lstrip(os.sep) in self.filesystem[self.root].keys():
             result = len(str(self.filesystem[self.root][path.lstrip(os.sep)]['content']))
