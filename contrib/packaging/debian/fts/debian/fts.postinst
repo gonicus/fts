@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set -e
-set -x
 
 case "$1" in
 	configure|reconfigure)
@@ -51,10 +50,6 @@ case "$1" in
         ;;
 
 esac
-
-pycompile() {
-	strace -ffff -s1024 pycompile $*
-}
 
 #DEBHELPER#
 
