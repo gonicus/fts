@@ -22,7 +22,6 @@ class FAIBoot(BootPlugin):
         self.tftp_root = os.path.dirname(self.config.get('tftp.path', '/srv/fai/boot'))
 
     def getBootParams(self, address):
-        result = None
         #syslog.syslog(syslog.LOG_DEBUG, "Searching for {address}".format(address=address))
         with self.ldap.get_handle() as conn:
             res = conn.search_s(
@@ -141,8 +140,7 @@ class FAIBoot(BootPlugin):
                         kernel = 'localboot'
 
                     elif status == 'sysinfo':
-                        def f(x): return x.strip() != "reboot"
-                        sysflags = ','.join(filter(f, self.fai_flags.split(',')))
+                        sysflags = ','.join(filter(lambda x: x.strip() != "reboot", self.fai_flags.split(',')))
                         cmdline = cmdline + " FAI_ACTION=sysinfo FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=sysflags) \
                                  + " devfs=nomount root=/dev/nfs boot=live union={union}".format(union=self.union)
                     else:
