@@ -23,7 +23,7 @@ def main():
     fuse.fuse_python_api = (0, 2)
     fuse.feature_assert('stateful_files', 'has_init')
 
-    syslog.openlog(logoption=syslog.LOG_PID, facility=syslog.LOG_USER)
+    syslog.openlog('fts', syslog.LOG_PID, syslog.LOG_USER)
     usage = """
 TFTP supplicant: provide pxelinux configuration files based on external state
 information.
