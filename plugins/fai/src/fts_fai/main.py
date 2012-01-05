@@ -90,7 +90,7 @@ class FAIBoot(BootPlugin):
                         syslog.syslog(syslog.LOG_ERR, line)
                         return None
 
-                    #TODO: Strip ldap parameter and all multiple and trailing spaces
+                    # Strip ldap parameter and all multiple and trailing spaces
                     cmdline = re.sub(r'ldap(=[^\s]*[\s]*|[\s]*$|\s+)', '', cmdline)
                     cmdline = re.sub(r'\s[\s]+', '', cmdline.strip())
 
