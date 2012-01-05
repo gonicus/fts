@@ -39,10 +39,10 @@ start_service() {
         fi
 
 	if ! test -z "$DAEMON_USER"; then
-            start-stop-daemon --start --quiet --chuid $DAEMON_USER \
+            start-stop-daemon --start --background --quiet --chuid $DAEMON_USER \
 		--exec /usr/sbin/$SERVICE -- --config $CONFIG
         else
-            start-stop-daemon --start --quiet \
+            start-stop-daemon --start --quiet --background \
 		--exec /usr/sbin/$SERVICE -- --config $CONFIG
         fi
 }
