@@ -36,7 +36,8 @@ Description: LDAP FAI module for the TFTP/Fuse supplicant
 
 Package: fts-clacks
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, fts, clacks-common
+Depends: ${python:Depends}, ${misc:Depends}, fts
+Recommends: clacks-common
 Description: Clacks module for the TFTP/Fuse supplicant
  FTS is a modular fuse-tftp-supplicant which allows to create 
  pxelinux configurations for different types of clients

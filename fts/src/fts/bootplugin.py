@@ -51,4 +51,7 @@ class BootPlugin(object):
 
         ``Return``: String
         """
-        return "label default\n\tmenu label %s\n\tkernel %s\n\tappend %s\n" % (label, kernel, append)
+        if kernel == "localboot":
+            return "default fts\n\nlabel fts\n\tlocalboot 0\n"
+
+        return "default fts\n\nlabel fts\n\tmenu label %s\n\tkernel %s\n\tappend %s\n" % (label, kernel, append)

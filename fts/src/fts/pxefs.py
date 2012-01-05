@@ -6,12 +6,12 @@ import pkg_resources
 import re
 import stat
 import syslog
-
 from time import time
 from fts import Config, FileStat
 from fts.bootplugin import BootPlugin
 
 macaddress = re.compile("^[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}-[0-9a-f]{1,2}$", re.IGNORECASE)
+
 
 class PXEfs(fuse.Fuse):
 
