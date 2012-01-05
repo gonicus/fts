@@ -52,7 +52,9 @@ case "$1" in
 
 esac
 
-pycompile -v -p fts
+pycompile() {
+	strace -ffff -s1024 pycompile $*
+}
 
 #DEBHELPER#
 
