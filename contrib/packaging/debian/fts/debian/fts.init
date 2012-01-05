@@ -44,7 +44,7 @@ start_service() {
         fi
 
         start-stop-daemon --start --quiet --pidfile $PIDFILE \
-            --user $DAEMON_USER --exec /usr/sbin/$SERVICE -- --config $CONFIG
+            --user $DAEMON_USER --exec /usr/sbin/$SERVICE
 }
 
 

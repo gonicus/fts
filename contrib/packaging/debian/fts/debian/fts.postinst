@@ -21,7 +21,7 @@ case "$1" in
         fi
 
 	# Do we need to add the fuse user?
-	getent group fuse | grep -n tftpd || adduser tftpd fuse
+	getent group fuse | grep -q tftpd | adduser tftpd fuse
 
 	# Create pxelinux.cfg path
 	[ ! -d "$tftppath/pxelinux.cfg" ] && mkdir -p "$tftppath/pxelinux.cfg"
@@ -36,7 +36,7 @@ case "$1" in
 
 	# Apply to config
 	sed -e "s~^path\s*=\s*/.*$~path = $tftppath/pxelinux.cfg~" \
-		-e "s~^static-path\s*=\s*/.*$~static-path = $tftppath/pxelinux.static~" /usr/share/doc/fts/fts.conf > /etc/fts/config.debconf-tmp
+		-e "s~^static-path\s*=\s*/.*$~static-path = $tftppath/pxelinux.static~" /usr/share/doc/fts/config > /etc/fts/config.debconf-tmp
 	ucf --three-way --debconf-ok /etc/fts/config.debconf-tmp /etc/fts/config
 	rm -f /etc/fts/config.debconf-tmp || true
 	;;
