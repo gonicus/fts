@@ -2,10 +2,6 @@
 
 set -e
 
-if [ -x "/etc/init.d/fts" ]; then
-	invoke-rc.d fts stop || exit $?
-fi
-
 #DEBHELPER#
 
 if [ "$1" = "purge" ] ; then

@@ -54,10 +54,3 @@ esac
 
 #DEBHELPER#
 
-# This needs to be done manually, because python debhelper stuff gets executed
-# the wrong order.
-if [ -x "/etc/init.d/fts" ]; then
-	update-rc.d fts defaults >/dev/null
-	invoke-rc.d fts start || exit $?
-fi
-
