@@ -45,24 +45,24 @@ Description: Clacks module for the TFTP/Fuse supplicant
  .
  This package provides the Clacks module for FTS.
 
-#Package: fts-ltsp-ldap
-#Architecture: all
-#Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
-#Description: LDAP LTSP module for the TFTP/Fuse supplicant
-# FTS is a modular fuse-tftp-supplicant which allows to create 
-# pxelinux configurations for different types of clients
-# using external modules on the fly.
-# .
-# This package provides the LTSP5 module for FTS which is using the
-# LDAP backend in conjunction with GOsa and GOto to generate client
-# configurations.
-#
-#Package: fts-opsi
-#Architecture: all
-#Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
-#Description: LDAP LTSP module for the TFTP/Fuse supplicant
-# FTS is a modular fuse-tftp-supplicant which allows to create 
-# pxelinux configurations for different types of clients
-# using external modules on the fly.
-# .
-# This package provides the OPSI module for FTS.
+Package: fts-ltsp-ldap
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
+Description: LDAP LTSP module for the TFTP/Fuse supplicant
+ FTS is a modular fuse-tftp-supplicant which allows to create 
+ pxelinux configurations for different types of clients
+ using external modules on the fly.
+ .
+ This package provides the LTSP5 module for FTS which is using the
+ LDAP backend in conjunction with GOsa and GOto to generate client
+ configurations.
+
+Package: fts-opsi
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
+Description: LDAP LTSP module for the TFTP/Fuse supplicant
+ FTS is a modular fuse-tftp-supplicant which allows to create 
+ pxelinux configurations for different types of clients
+ using external modules on the fly.
+ .
+ This package provides the OPSI module for FTS.
