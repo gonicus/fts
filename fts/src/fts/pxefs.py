@@ -117,7 +117,7 @@ class PXEfs(fuse.Fuse):
                 # Need to transform /01-00-00-00-00-00-00 into 00:00:00:00:00:00
                 content = self.boot_method_reg[method].getBootParams(path[4:].replace('-', ':'))
                 if content is not None:
-                    syslog.syslog(syslog.LOG_DEBUG, "found relevant information: " % content)
+                    syslog.syslog(syslog.LOG_DEBUG, "found relevant information: " + content)
                     self.filesystem[self.root][path]['content'] = str(content)
                     self.filesystem[self.root][path]['timestamp'] = time()
                     break
