@@ -138,7 +138,8 @@ class FAIBoot(BootPlugin):
                         cmdline = cmdline + " FAI_ACTION=install FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=self.fai_flags) \
                                 + " devfs=nomount root=/dev/nfs boot=live union={union} faierror:{faierror}".format(union=self.union, faierror=faierror)
                     elif status in ['softupdate', 'localboot']:
-                        return 'localboot 0\n'
+                        kernel = 'localboot'
+
                     elif status == 'sysinfo':
                         def f(x): return x.strip() != "reboot"
                         sysflags = ','.join(filter(f, self.fai_flags.split(',')))
@@ -149,8 +150,7 @@ class FAIBoot(BootPlugin):
                         syslog.syslog(syslog.LOG_ERR, "{hostname} - unknown FAIstate: {status}".format(hostname=hostname, status=status))
                         return None
 
-                    result = self.make_pxe_entry(kernel=kernel, append=cmdline)
-                    return result
+                    return self.make_pxe_entry(kernel, cmdline)
 
         return None
 
