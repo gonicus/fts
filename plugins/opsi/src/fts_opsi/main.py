@@ -24,6 +24,8 @@ class OPSIBoot(BootPlugin):
         product= ""
 
         client_id = proxy.getClientIdByMac(address)
+        if not client_id:
+            return None
 
         # Find netboot product with actionRequest
         for product in proxy.getNetBootProductStates_hash(client_id)[client_id]:
@@ -57,8 +59,4 @@ class OPSIBoot(BootPlugin):
 
 
     def getInfo(self):
-        return "OPSI"
-
-a = OPSIBoot()
-print a.getBootParams('08-00-27-a0-c9-2d')
-
+        return "OPSI - Open PC Server Integration"

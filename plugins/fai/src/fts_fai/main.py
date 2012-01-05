@@ -150,7 +150,7 @@ class FAIBoot(BootPlugin):
                         syslog.syslog(syslog.LOG_ERR, "{hostname} - unknown FAIstate: {status}".format(hostname=hostname, status=status))
                         return None
 
-                    return self.make_pxe_entry(kernel, cmdline)
+                    return self.make_pxe_entry(kernel, cmdline, label="FAI - powered by FTS")
 
         return None
 
