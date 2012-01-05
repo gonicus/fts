@@ -138,8 +138,7 @@ class FAIBoot(BootPlugin):
                         cmdline = cmdline + " FAI_ACTION=install FAI_FLAGS={fai_flags} ip=dhcp".format(fai_flags=self.fai_flags) \
                                 + " devfs=nomount root=/dev/nfs boot=live union={union} faierror:{faierror}".format(union=self.union, faierror=faierror)
                     elif status in ['softupdate', 'localboot']:
-                        kernel = 'localboot 0'
-                        cmdline = ''
+                        return 'localboot 0\n'
                     elif status == 'sysinfo':
                         def f(x): return x.strip() != "reboot"
                         sysflags = ','.join(filter(f, self.fai_flags.split(',')))
