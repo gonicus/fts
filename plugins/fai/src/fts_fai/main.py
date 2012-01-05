@@ -23,7 +23,7 @@ class FAIBoot(BootPlugin):
 
     def getBootParams(self, address):
         result = None
-        syslog.syslog(syslog.LOG_DEBUG, "Searching for {address}".format(address=address))
+        #syslog.syslog(syslog.LOG_DEBUG, "Searching for {address}".format(address=address))
         with self.ldap.get_handle() as conn:
             res = conn.search_s(
                 self.ldap.get_base(),
@@ -38,7 +38,6 @@ class FAIBoot(BootPlugin):
                     return None
 
                 if count == 1:
-                    syslog.syslog(syslog.LOG_DEBUG, repr(res))
                     dn, attributes = res[0]
                     hostname = attributes.get('cn', [''])[0]
                     status = attributes.get('FAIstate', [''])[0]
