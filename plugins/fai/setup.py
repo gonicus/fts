@@ -42,6 +42,6 @@ setup(
 
     entry_points = """
     [fts.plugin]
-    fai = fai.main:FAIBoot
+    fai = fts_fai.main:FAIBoot
 """,
 )

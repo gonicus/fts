@@ -42,6 +42,6 @@ setup(
 
     entry_points = """
     [fts.plugin]
-    clacks = clacks.main:ClacksBoot
+    clacks = fts_clacks.main:ClacksBoot
 """,
 )

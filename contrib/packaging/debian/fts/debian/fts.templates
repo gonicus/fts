@@ -1,6 +1,6 @@
 Template: fts/tftppath
 Type: string
-Default: /srv/fai/boot
+Default: /tftpboot
 _Description: Base directory for the TFTP files:
  Please note that the configuration directory for TFTP is the one that
  usually contains the pxelinux.0 file. It has to be configured to the same

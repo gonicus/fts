@@ -31,7 +31,7 @@ case "$1" in
 
 	# Create a safe default file
 	if [ ! -f "$tftppath/pxelinux.static/default" ]; then
-	 	echo "localboot 0" > "$tftppath/pxelinux.cfg/default"
+	 	echo "localboot 0" > "$tftppath/pxelinux.static/default"
 	fi
 
 	# Apply to config

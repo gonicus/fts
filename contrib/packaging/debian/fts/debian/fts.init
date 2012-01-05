@@ -49,9 +49,10 @@ start_service() {
 
 
 stop_service() {
-	LC_ALL=C mount | grep -q "^$SERVICE on" || return
 	PIDFILE=/var/run/$SERVICE.pid
-	fusermount -u "$MOUNTPOINT"
+	if LC_ALL=C mount | grep -q "^$SERVICE on"; then
+		fusermount -u "$(mount_path)"
+	fi
 	rm -f $PIDFILE
 }
 
