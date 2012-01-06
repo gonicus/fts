@@ -33,7 +33,7 @@ class FAIBoot(BootPlugin):
             if res is not None:
                 count = len(res)
                 if count > 1:
-                    syslog.syslog("ignoring %s - LDAP search is not unique (%d entries match)" % (address, res.count()))
+                    syslog.syslog("[fai] ignoring %s - LDAP search is not unique (%d entries match)" % (address, res.count()))
                     return None
 
                 if count == 1:
@@ -42,12 +42,12 @@ class FAIBoot(BootPlugin):
                     status = attributes.get('FAIstate', [''])[0]
                     if not status:
                         if self.default_init == 'fallback':
-                            syslog.syslog(syslog.LOG_DEBUG, "No FAI Status for {hostname} - continue PXE boot".format(hostname=hostname))
+                            syslog.syslog(syslog.LOG_DEBUG, "[fai] No FAI Status for {hostname} - continue PXE boot".format(hostname=hostname))
                             return None
                         else:
                             status = self.default_init
 
-                    syslog.syslog(syslog.LOG_DEBUG, "Found {hostname}, FAI Status is '{status}'".format(hostname=hostname, status=status))
+                    syslog.syslog(syslog.LOG_DEBUG, "[fai] Found {hostname}, FAI Status is '{status}'".format(hostname=hostname, status=status))
                     kernel = attributes.get('gotoBootKernel', [''])[0]
                     ldap_server = attributes.get('gotoLdapServer', [''])[0]
                     cmdline = attributes.get('gotoKernelParameters', [''])[0]
@@ -62,7 +62,7 @@ class FAIBoot(BootPlugin):
                         if member_res is not None:
                             group_count = len(member_res)
                             if group_count > 1:
-                                syslog.syslog(syslog.LOG_ERR, "Found more than one group for host {hostname}!")
+                                syslog.syslog(syslog.LOG_ERR, "[fai] Found more than one group for host {hostname}!")
                                 return None
 
                             if group_count == 1:
@@ -78,14 +78,14 @@ class FAIBoot(BootPlugin):
                                     cmdline = group_attributes.get('gotoKernelParameters', [''])[0]
 
                             if group_count == 0:
-                                syslog.syslog(syslog.LOG_INFO, "{hostname} - no group membership found - aborting".format(hostname=hostname))
+                                syslog.syslog(syslog.LOG_INFO, "[fai] {hostname} - no group membership found - aborting".format(hostname=hostname))
 
                     if not kernel or not ldap_server:
-                        line = "{hostname} - missing attribute(s) - ".format(hostname=hostname)
+                        line = "[fai] {hostname} - missing attribute(s) -".format(hostname=hostname)
                         if not kernel:
-                            line = line + "gotoBootKernel "
+                            line = line + " gotoBootKernel"
                         if not ldap_server:
-                            line = line + "gotoLdapServer"
+                            line = line + " gotoLdapServer"
                         syslog.syslog(syslog.LOG_ERR, line)
                         return None
 
@@ -106,13 +106,13 @@ class FAIBoot(BootPlugin):
                     if not os.access(self.tftp_root + os.sep + kernel, os.F_OK):
                         # Try default kernel
                         if os.access(self.tftp_root + os.sep + 'vmlinuz-' + kernel_version, os.F_OK):
-                            syslog.syslog(syslog.LOG_INFO, "{hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-{version}'".format(hostname=hostname, kernel=kernel, version=kernel_version))
+                            syslog.syslog(syslog.LOG_INFO, "[fai] {hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-{version}'".format(hostname=hostname, kernel=kernel, version=kernel_version))
                             kernel = 'vmlinuz-' + kernel_version
                         elif os.access(self.tftp_root + os.sep + 'vmlinuz-install', os.F_OK):
-                            syslog.syslog(syslog.LOG_INFO, "{hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-install'".format(hostname=hostname, kernel=kernel))
+                            syslog.syslog(syslog.LOG_INFO, "[fai] {hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-install'".format(hostname=hostname, kernel=kernel))
                             kernel = 'vmlinuz-install'
                         else:
-                            syslog.syslog(syslog.LOG_ERR, "{hostname} - specified kernel {kernel} does not exist!".format(hostname=hostname, kernel=kernel))
+                            syslog.syslog(syslog.LOG_ERR, "[fai] {hostname} - specified kernel {kernel} does not exist!".format(hostname=hostname, kernel=kernel))
                             return None
 
                     # - try to find the initrd
@@ -145,7 +145,7 @@ class FAIBoot(BootPlugin):
                                  + " devfs=nomount root=/dev/nfs boot=live union={union}".format(union=self.union)
                     else:
                         # Unknown status
-                        syslog.syslog(syslog.LOG_ERR, "{hostname} - unknown FAIstate: {status}".format(hostname=hostname, status=status))
+                        syslog.syslog(syslog.LOG_ERR, "[fai] {hostname} - unknown FAIstate: {status}".format(hostname=hostname, status=status))
                         return None
 
                     return self.make_pxe_entry(kernel, cmdline, label="FAI - powered by FTS")
