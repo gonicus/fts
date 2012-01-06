@@ -3,6 +3,7 @@ import ldap
 import ldap.filter
 import os
 import syslog
+import socket
 import re
 from fts.ldap_utils import LDAPHandler
 from fts.bootplugin import BootPlugin
@@ -15,10 +16,6 @@ class LTSPBoot(BootPlugin):
 
         self.ldap = LDAPHandler.get_instance()
         self.server = self.config.get('ltsp.server', 'localhost')
-        self.nfs_opts= self.config.get('fai.nfs-opts', 'nfs4')
-        self.fai_flags= self.config.get('fai.flags', 'verbose,sshd,syslogd,createvt,reboot')
-        self.union= self.config.get('fai.union', 'unionfs')
-        self.default_init= self.config.get('tftp.default-init', 'fallback')
         self.tftp_root = os.path.dirname(self.config.get('tftp.path', '/srv/fai/boot'))
 
     def getBootParams(self, address):
@@ -77,7 +74,7 @@ class LTSPBoot(BootPlugin):
                                 syslog.syslog(syslog.LOG_INFO, "[ltsp] {hostname} - no group membership found - aborting".format(hostname=hostname))
 
                     if not kernel or not ldap_server or not cmdline or not nfsroot:
-                        line = "{hostname} - missing attribute(s) -".format(hostname=hostname)
+                        line = "[ltsp] {hostname} - missing attribute(s) -".format(hostname=hostname)
                         if not kernel:
                             line = line + " gotoBootKernel"
                         if not ldap_server:
@@ -102,30 +99,35 @@ class LTSPBoot(BootPlugin):
                     elif kernel.startswith('linux-image-'):
                         kernel_version = kernel[12:]
 
-                    # # - guess filename for kernel
-                    # if not os.access(self.tftp_root + os.sep + kernel, os.F_OK):
-                    #     # Try default kernel
-                    #     if os.access(self.tftp_root + os.sep + 'vmlinuz-' + kernel_version, os.F_OK):
-                    #         syslog.syslog(syslog.LOG_INFO, "{hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-{version}'".format(hostname=hostname, kernel=kernel, version=kernel_version))
-                    #         kernel = 'vmlinuz-' + kernel_version
-                    #     elif os.access(self.tftp_root + os.sep + 'vmlinuz-install', os.F_OK):
-                    #         syslog.syslog(syslog.LOG_INFO, "{hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-install'".format(hostname=hostname, kernel=kernel))
-                    #         kernel = 'vmlinuz-install'
-                    #     else:
-                    #         syslog.syslog(syslog.LOG_ERR, "{hostname} - specified kernel {kernel} does not exist!".format(hostname=hostname, kernel=kernel))
-                    #         return None
+                    # - guess filename for kernel
+                    if not os.access(self.tftp_root + os.sep + kernel, os.F_OK):
+                        # Try default kernel
+                        if os.access(self.tftp_root + os.sep + 'vmlinuz-' + kernel_version, os.F_OK):
+                            syslog.syslog(syslog.LOG_INFO, "[ltsp] {hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-{version}'".format(hostname=hostname, kernel=kernel, version=kernel_version))
+                            kernel = 'vmlinuz-' + kernel_version
+                        else:
+                            syslog.syslog(syslog.LOG_ERR, "[ltsp] {hostname} - specified kernel {kernel} does not exist!".format(hostname=hostname, kernel=kernel))
+                            return None
 
-                    # # - try to find the initrd
-                    # path = self.tftp_root + os.sep + 'initrd.img-' + kernel_version
-                    # if os.access(path, os.F_OK):
-                    #     cmdline = cmdline + " initrd=initrd.img-" + kernel_version
-                    #     cmdline = cmdline.strip()
+                    # - try to find the initrd
+                    path = self.tftp_root + os.sep + 'initrd.img-' + kernel_version
+                    if os.access(path, os.F_OK):
+                        cmdline = cmdline + " initrd=initrd.img-" + kernel_version
+                        cmdline = cmdline.strip()
 
-                    # # Add NFS options
-                    # cmdline = cmdline + " nfsroot=" + self.nfs_root + "," + self.nfs_opts
-                    # cmdline = cmdline.strip()
+                    # (possibly) fix nfsroot parameter
+                    server, path = nfsroot.split(":", 1)
+                    if not re.match(r'^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$', server):
+                        try:
+                            server = socket.gethostbyname(server)
+                        except:
+                            pass
 
-                    # result = self.make_pxe_entry(kernel=kernel, append=cmdline)
+                    nfsroot = server + ":" + path
+                    cmdline = "ro initrd={initrd} ip=dhcp boot=nfs root=/dev/nfs nfsroot={nfsroot} " + cmdline
+                    cmdline = cmdline.strip()
+
+                    result = self.make_pxe_entry(kernel=kernel, append=cmdline, label="LTSP - powered by FTS")
                     return result
 
         return None
