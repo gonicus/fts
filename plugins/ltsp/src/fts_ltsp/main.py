@@ -121,10 +121,11 @@ class LTSPBoot(BootPlugin):
                         try:
                             server = socket.gethostbyname(server)
                         except:
+                            syslog.syslog(syslog.LOG_ERR, "[ltsp] cannot resolve {hostname} to address!".format(hostname=server))
                             pass
 
                     nfsroot = server + ":" + path
-                    cmdline = "ro initrd={initrd} ip=dhcp boot=nfs root=/dev/nfs nfsroot={nfsroot} " + cmdline
+                    cmdline = "ro ip=dhcp boot=nfs root=/dev/nfs nfsroot={nfsroot} ".format(nfsroot=nfsroot) + cmdline
                     cmdline = cmdline.strip()
 
                     result = self.make_pxe_entry(kernel=kernel, append=cmdline, label="LTSP - powered by FTS")
