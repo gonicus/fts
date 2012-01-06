@@ -33,7 +33,7 @@ class LTSPBoot(BootPlugin):
             if res is not None:
                 count = len(res)
                 if count > 1:
-                    syslog.syslog("ignoring %s - LDAP search is not unique (%d entries match)" % (address, res.count()))
+                    syslog.syslog("[ltsp] ignoring %s - LDAP search is not unique (%d entries match)" % (address, res.count()))
                     return None
 
                 if count == 1:
@@ -55,7 +55,7 @@ class LTSPBoot(BootPlugin):
                         if member_res is not None:
                             group_count = len(member_res)
                             if group_count > 1:
-                                syslog.syslog(syslog.LOG_ERR, "Found more than one group for host {hostname}!")
+                                syslog.syslog(syslog.LOG_ERR, "[ltsp] Found more than one group for host {hostname}!")
                                 return None
 
                             if group_count == 1:
@@ -74,18 +74,18 @@ class LTSPBoot(BootPlugin):
                                     nfsroot = group_attributes.get('gotoTerminalPath', [''])[0]
 
                             if group_count == 0:
-                                syslog.syslog(syslog.LOG_INFO, "{hostname} - no group membership found - aborting".format(hostname=hostname))
+                                syslog.syslog(syslog.LOG_INFO, "[ltsp] {hostname} - no group membership found - aborting".format(hostname=hostname))
 
                     if not kernel or not ldap_server or not cmdline or not nfsroot:
-                        line = "{hostname} - missing attribute(s) - ".format(hostname=hostname)
+                        line = "{hostname} - missing attribute(s) -".format(hostname=hostname)
                         if not kernel:
-                            line = line + "gotoBootKernel "
+                            line = line + " gotoBootKernel"
                         if not ldap_server:
-                            line = line + "gotoLdapServer"
+                            line = line + " gotoLdapServer"
                         if not cmdline:
-                            line = line + "gotoKernelParameters"
+                            line = line + " gotoKernelParameters"
                         if not nfsroot:
-                            line = line + "gotoTerminalPath"
+                            line = line + " gotoTerminalPath"
                         syslog.syslog(syslog.LOG_ERR, line)
                         return None
 
