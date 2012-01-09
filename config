@@ -69,7 +69,3 @@ static-path =  /tftpboot/pxelinux.static
 ## another boot method. Other valid values are 'install',
 ## 'install-init', 'softupdate', 'localboot' and 'sysinfo'.
 #default-init = fallback
-
-
-#[ltsp]
-#server = localhost
