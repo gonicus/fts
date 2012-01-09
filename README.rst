@@ -4,7 +4,7 @@ FTS README
 What is FTS?
 ^^^^^^^^^^^^
 
-FTS is a TFTP supplicant package. It uses a FUSE in conjunction to your
+FTS is a TFTP supplicant package. It uses a FUSE filesystem in conjunction to your
 ordinary TFTP service (like atftpd, tftpd, etc.) in order to provide
 dynamically generated start configurations for certain MAC addresses.
 
