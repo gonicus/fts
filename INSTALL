@@ -1,0 +1,23 @@
+Quick installation guide
+========================
+
+It is recommended to install FTS as a package for your distribution. To
+create a package, please take a look at the contrib/packaging/<distribution>
+directory - if there's none for your favorite distribution, please
+feel free to create a package ;-)
+
+---
+
+Installing from source involves these steps:
+
+ * Make sure you've the python setuptools/distutils installed.
+
+ * Running top-level "./setup.py install" as root installs FTS
+   including all included modules to your systems python installation.
+
+ * Running fts/setup.py and selected plugins/*/setup.py installs
+   the 'core' and the selected plugins.
+
+ * Create an init script (or take the one from
+   contrib/packaging/debian/fts/debian/fts.init) and activate your
+   service.
