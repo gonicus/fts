@@ -2,26 +2,25 @@
 # PACKAGE 软件包的简体中文翻译.
 # Copyright (C) 2010 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# YunQiang Su <wzssyqa@gmail.com>, 2010, 2011.
+# YunQiang Su <wzssyqa@gmail.com>, 2010, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: fts VERSION\n"
 "Report-Msgid-Bugs-To: fts@packages.debian.org\n"
 "POT-Creation-Date: 2011-04-27 14:29+0200\n"
-"PO-Revision-Date: 2011-04-08 18:58+0800\n"
+"PO-Revision-Date: 2012-01-02 21:34+0800\n"
 "Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bits\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#, fuzzy
 #| msgid "Base directory for the tftp files:"
 msgid "Base directory for the TFTP files:"
 msgstr "tftp 文件的基目录："
@@ -29,7 +28,6 @@ msgstr "tftp 文件的基目录："
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#, fuzzy
 #| msgid ""
 #| "The config directory for tftp is where the pxelinux.0 image lies. This "
 #| "must be in sync with your TFTP Server"
@@ -38,8 +36,8 @@ msgid ""
 "usually contains the pxelinux.0 file. It has to be configured to the same "
 "value that is used by your TFTP server."
 msgstr ""
-"tftp 的配置目录就是 pxelinux.0 镜像文件所在的目录，其必须要与 TFTP 服务器保持"
-"同步。"
+"请注意，tftp 的配置目录通常就是 pxelinux.0 镜像文件所在的目录，其必须要配置为"
+"与 TFTP 服务器使用的值相同。"
 
 #~ msgid ""
 #~ "The base directory for TFTP is the root dir for served files. The default "

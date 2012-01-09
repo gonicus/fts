@@ -50,7 +50,14 @@ start_service() {
 
 stop_service() {
 	if LC_ALL=C mount | grep -q "^$SERVICE on"; then
-		fusermount -u "$(mount_path)"
+                if [ "$(uname)" = Linux ]; then
+			fusermount -u "$(mount_path)"
+                elif [ "$(uname)" = GNU/kFreeBSD ]; then
+                        umount -u $(mount_path)
+                else
+                        echo "fts does not know how to unmount for this architecture." >&2
+                        exit 1
+                fi
 	fi
 }
 

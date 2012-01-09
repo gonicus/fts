@@ -1,26 +1,26 @@
-# Czech translation of PO debconf template for package fts.
-# Copyright (C) 2010 Michal Simunek
+# Danish translation fts.
+# Copyright (C) 2012 fts & nedenstående oversættere.
 # This file is distributed under the same license as the fts package.
-# Michal Simunek <michal.simunek@gmail.com>, 2010 - 2011.
+# Joe Hansen <joedalton2@yahoo.dk>, 2010, 2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: fts 0.1-5\n"
+"Project-Id-Version: fts\n"
 "Report-Msgid-Bugs-To: fts@packages.debian.org\n"
 "POT-Creation-Date: 2011-04-27 14:29+0200\n"
-"PO-Revision-Date: 2011-05-28 11:09+0200\n"
-"Last-Translator: Michal Simunek <michal.simunek@gmail.com>\n"
-"Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
+"PO-Revision-Date: 2012-01-03 19:21+0100\n"
+"Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
+"Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
 msgid "Base directory for the TFTP files:"
-msgstr "Základní adresář pro soubory TFTP:"
+msgstr "Grundmappe for TFTP-filer:"
 
 #. Type: string
 #. Description
@@ -30,6 +30,7 @@ msgid ""
 "usually contains the pxelinux.0 file. It has to be configured to the same "
 "value that is used by your TFTP server."
 msgstr ""
-"Vezměte prosím na vědomí, že adresář s nastavením pro TFTP je ten, který "
-"obvykle obsahuje soubor pxelinux.0. Měl by být nastaven na stejnou "
-"hodnotu, jakou používá váš TFTP server."
+"Bemærk venligst at konfigurationsmappen for TFTP er den mappe som "
+"normalt indeholder filen pxelinux.0. Denne skal konfigureres til "
+"den samme værdi, som bruges af din TFTP-server."
+

@@ -1,5 +1,99 @@
-fts (1.0-1) unstable; urgency=low
+fts (0.9-1) unstable; urgency=low
 
-  * Initial release
+  [Cajus Pollmeier]
 
- -- Cajus Pollmeier <cajus@debian.org>  Fri, 06 May 2011 12:20:22 +0200
+  * Major rewrite of fts.
+  * Fixed FUSE issue on non Linux systems. Closes: #634471
+
+  [Christian Perrier]
+
+  * Fix pending l10n issues. Debconf translations:
+    - Chinese (YunQiang Su). Closes: #654228
+    - Czech (Michal Simunek). Closes: #628207
+    - Swedish (Martin Bagge). Closes: #628929, Closes: #653558
+    - Spanish (Omar Campagne Polaino). Closes: #633881
+    - Slowak (helix84). Closes: #654184
+    - Danish (Joe Dalton). Closes: #654301
+    - Dutch (Jeroen Schot). Closes: #654369
+    - Brazilian Portuguese (Adriano Rafael Gomes). Closes: #655120
+
+ -- Cajus Pollmeier <cajus@debian.org>  Mon, 09 Jan 2012 07:48:48 +0100
+
+fts (0.2-1) unstable; urgency=low
+
+  [Cajus Pollmeier]
+
+  * Fix pending l10n issues. Debconf translations:
+    - Portuguese (Américo Monteiro).  Closes: #624498
+    - French (Christian Perrier).  Closes: #624581
+    - Russian (Yuri Kozlov).  Closes: #625245
+
+  [Benoit Mortier]
+
+  * Fixes manpages and copyright
+  * Converted to Debian 3.0 format
+  * Integrated patches
+
+ -- Benoit Mortier <benoit.mortier@opensides.be>  Fri, 28 May 2011 00:08:00 +0200
+
+fts (0.1-5) unstable; urgency=low
+
+  * Fix pending l10n issues. Debiconf translations:
+    - Brazilian Portuguese (Adriano Rafael Gomes). Closes: #602028
+    - Japanese (Nobuhiro Iwamatsu). Closes: #602466
+    - Chinese (YunQiang Su). Closes: #621732
+  * Minor improvement of debconf template. Closes: #588736
+
+ -- Cajus Pollmeier <cajus@debian.org>  Wed, 27 Apr 2011 14:05:21 +0200
+
+fts (0.1-4.2) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix pending l10n issues. Debconf translations:
+    - German (Helge Kreutzmann).  Closes: #588735
+    - Czech (Michal Simunek).  Closes: #589327
+    - Italian (Vincenzo Campanella).  Closes: #597308
+    - Slovak (Ivan Masár).  Closes: #598695
+    - Danish (Joe Hansen).  Closes: #598774
+    - Vietnamese (Clytie Siddall).  Closes: #598697
+
+ -- Christian Perrier <bubulle@debian.org>  Tue, 19 Oct 2010 22:21:17 +0200
+
+fts (0.1-4) unstable; urgency=low
+
+  * Removed not applicable copyright
+  * Added missing option in commandline help
+  * Corrected man pages
+
+ -- Benoit Mortier <benoit.mortier@opensides.be>  Wed, 09 Jun 2010 20:47:41 +0200
+
+fts (0.1-3) unstable; urgency=low
+
+  * [INTL:sv] Swedish strings for fts debconf (Closes: #575876)
+  * [INTL:vi] Vietnamese debconf templates translation (Closes: #576021)
+  * [INTL:es] Spanish translation for debconf template (Closes: #578142)
+
+ -- Benoit Mortier <benoit.mortier@opensides.be>  Sun, 25 Apr 2010 19:47:38 +0200
+
+fts (0.1-2) unstable; urgency=low
+
+  * Should probably allow alternative tftpd implementations (Closes:
+    #567683)
+  * Drop superfluous tftpd suggestion (Closes: #567682)
+  * [INTL:ru] Russian debconf templates translation (Closes: #567990)
+  * [INTL:pt] Updated Portuguese translation for debconf messages
+    (Closes: #568746)
+  * [INTL:sv] po-debconf file for fts (Closes: #569717)
+  * [l10n:cs] Initial Czech translation of PO debconf template for
+    package fts 0.1-1 (Closes: #569988)
+  * [INTL:sk] Slovak po-debconf translation (Closes: #570414)
+  * [INTL:it] Italian translation (Closes: #570744)
+  * [INTL:es] Spanish translation for fts (Closes: #571081)
+
+ -- Benoit Mortier <benoit.mortier@opensides.be>  Mon, 22 Mar 2010 22:52:18 +0100
+
+fts (0.1-1) unstable; urgency=low
+
+  * Initial release. (Closes: #563958)
+
+ -- Cajus Pollmeier <cajus@debian.org>  Mon, 04 Jan 2010 16:50:01 +0100
