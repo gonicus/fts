@@ -15,8 +15,7 @@ class LTSPBoot(BootPlugin):
         super(LTSPBoot, self).__init__()
 
         self.ldap = LDAPHandler.get_instance()
-        self.server = self.config.get('ltsp.server', 'localhost')
-        self.tftp_root = os.path.dirname(self.config.get('tftp.path', '/srv/fai/boot'))
+        self.tftp_root = os.path.dirname(self.config.get('tftp.path', '/tftpboot/pxelinux.cfg'))
 
     def getBootParams(self, address):
         result = None

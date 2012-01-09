@@ -18,8 +18,8 @@ class FAIBoot(BootPlugin):
         self.nfs_opts= self.config.get('fai.nfs-opts', 'nfs4')
         self.fai_flags= self.config.get('fai.flags', 'verbose,sshd,syslogd,createvt,reboot')
         self.union= self.config.get('fai.union', 'unionfs')
-        self.default_init= self.config.get('tftp.default-init', 'fallback')
-        self.tftp_root = os.path.dirname(self.config.get('tftp.path', '/srv/fai/boot'))
+        self.default_init= self.config.get('fai.default-init', 'fallback')
+        self.tftp_root = os.path.dirname(self.config.get('tftp.path', '/tftpboot/pxelinux.cfg'))
 
     def getBootParams(self, address):
         #syslog.syslog(syslog.LOG_DEBUG, "Searching for {address}".format(address=address))

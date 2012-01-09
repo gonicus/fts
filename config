@@ -1,3 +1,75 @@
+# FTS configuration file
+
+#[core]
+#foreground = False
+
+
 [tftp]
+
+# Path that FTS uses for it's layer filesystem
 path = /tftpboot/pxelinux.cfg
+
+# Path that contains the static information that gets directly
+# served if exists.
 static-path =  /tftpboot/pxelinux.static
+
+
+#[ldap]
+#
+## LDAP URL which might be used by several plugins in order to
+## find out what to do with the incoming request. Used at least
+## by FAI and LTSP.
+#url = ldap://ldap.example.net/dc=example,dc=net
+#
+## Eventually needed bind DN if anonymous access is not allowed.
+#bind_dn = cn=manager,dc=example,dc=net
+#
+## Password for the bind.
+#bind_secret = secret
+#
+## Number of LDAP simultaneous connections in the connection pool.
+#pool_size = 10
+
+
+#[clacks]
+#
+## AMQP URL for the Clacks system bus. It is needed if you decide
+## to use libinst for serving boot parameters.
+#proxy = amqps://user:password@amqp.example.net/your.domain
+
+
+#[opsi]
+#
+## HTTP(S) URL to the OPSI server, including username and passwords.
+#proxy = https://user:password@opsi.example.net:4447/rpc
+#
+## Custom append line to pass to the clients
+#append = noapic ramdisk_size=175112 init=/etc/init initrd=opsi-root.gz reboot=b video=vesa:ywrap,mtrr vga=791 quiet splash
+#
+## Default language to use in the installation environment.
+#language = en
+
+
+#[fai]
+#
+## Path to the NFS root which is served to FAI clients.
+#nfs-root = /srv/nfsroot
+#
+## Options for the NFS root mount.
+#nfs-opts = nfs4
+#
+## FAI flags to use for the clients.
+#flags = verbose,sshd,syslogd,createvt,reboot
+#
+## Union filesystem to use (aufs/unionfs)
+#union = aufs
+#
+## If a client has no status, you can define what happens to it
+## using the default-init keyword. 'fallback' continues to seek
+## another boot method. Other valid values are 'install',
+## 'install-init', 'softupdate', 'localboot' and 'sysinfo'.
+#default-init = fallback
+
+
+#[ltsp]
+#server = localhost
