@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "fts_fai",
-    version = "1.0",
+    version = "0.9",
     author = "Jan Wenzel",
     author_email = "wenzel@gonicus.de",
     description = "PXE/TFTP supplicant application",
