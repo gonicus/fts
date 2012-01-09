@@ -5,7 +5,7 @@ Maintainer: Cajus Pollmeier <cajus@debian.org>
 Build-Depends: debhelper (>= 7.0.50~), python (>= 2.6.6-3~), python-setuptools
 X-Python-Version: >= 2.6
 Standards-Version: 3.9.2
-Homepage: http://gosa-project.org
+Homepage: https://github.com/clacks/fts
 Vcs-Browser: https://github.com/clacks/fts
 Vcs-Git: git://github.com/clacks/fts.git
 
