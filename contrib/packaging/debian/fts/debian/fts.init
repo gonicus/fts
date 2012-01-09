@@ -8,7 +8,7 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Modular TFTP/Fuse supplicant
-# Description:       TODO
+# Description:       Start fts service
 ### END INIT INFO
 
 set -e
