@@ -1,4 +1,11 @@
-# Start the fts process as a custom user.
+# Start the FTS process as a custom user. If you run FTS as a separate
+# user, you need to take care about these things:
+#
+# * Make sure the user owns the configure TFTP directory
+# * Make suer the user is able to read the static TFTP directory
+# * Modify your fuse.conf to include the "user_allow_other" keyword
+# * Make sure the user is in the fuse group
+#
 #DAEMON_USER=tftpd
 
 # Use an alternate configuration file.
