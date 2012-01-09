@@ -20,6 +20,6 @@ falling back to your static files.
 There are currently modules for OPSI, FAI (LDAP), LTSP5 (LDAP) and Clacks.
 If you've installed all of them, a booting client will first request a
 file partly named after it's hardware address (MAC). Every FTS module is
-asked if it want's to handle the provided MAC address in an specific
+asked if it want's to handle the provided MAC address in an unspecific
 order. The first one which claims to have a proper PXE configuration will
 provide a virtual file which is then served to the client.
