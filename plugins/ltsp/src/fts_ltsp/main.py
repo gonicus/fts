@@ -121,7 +121,6 @@ class LTSPBoot(BootPlugin):
                             server = socket.gethostbyname(server)
                         except:
                             syslog.syslog(syslog.LOG_ERR, "[ltsp] cannot resolve {hostname} to address!".format(hostname=server))
-                            pass
 
                     nfsroot = server + ":" + path
                     cmdline = "ro ip=dhcp boot=nfs root=/dev/nfs nfsroot={nfsroot} ".format(nfsroot=nfsroot) + cmdline
