@@ -8,7 +8,7 @@
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
 # Short-Description: Modular TFTP/Fuse supplicant
-# Description:       Start fts service
+# Description:       Start FTS service
 ### END INIT INFO
 
 set -e
@@ -55,7 +55,7 @@ stop_service() {
                 elif [ "$(uname)" = GNU/kFreeBSD ]; then
                         umount -u $(mount_path)
                 else
-                        echo "fts does not know how to unmount for this architecture." >&2
+                        echo "FTS does not know how to unmount for this architecture." >&2
                         exit 1
                 fi
 	fi
@@ -72,22 +72,25 @@ test -f /etc/default/$SERVICE && . /etc/default/$SERVICE
 
 case "$1" in
     start)
+        # Warn if there's an old configuration around
+	[ -e /etc/fts/fts.conf ] && echo "WARNING: there's an old fts.conf file around - see README.Debian"
+
         # If we've no configuration now, stop more or less silently
         if [ ! -e $CONFIG ]; then
             echo ""
-            echo "fts is not configured: please create $CONFIG to enable"
+            echo "FTS is not configured: please create $CONFIG to enable"
             exit 0
         fi
 
 	if ! test -z "$DAEMON_USER"; then
             if ! getent group fuse | grep -q "[,:]$DAEMON_USER\(,\|$\)"; then
                 echo ""
-                echo "fts is not configured: please add the user $DAEMON_USER to the fuse group"
+                echo "FTS is not configured: please add the user $DAEMON_USER to the fuse group"
                 exit 0
             fi
 	    if ! grep -q '^[^#]*\s*user_allow_other\s*$' /etc/fuse.conf; then
                 echo ""
-                echo "fts is not configured: please add the 'user_allow_other' option to /etc/fuse.conf"
+                echo "FTS is not configured: please add the 'user_allow_other' option to /etc/fuse.conf"
                 exit 0
 	    fi
 	fi
@@ -101,7 +104,7 @@ case "$1" in
     stop)
         if [ ! -e $CONFIG ]; then
             echo ""
-            echo "fts is not configured, please create $CONFIG to enable"
+            echo "FTS is not configured, please create $CONFIG to enable"
             exit 0
         fi
 

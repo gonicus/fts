@@ -1,0 +1,26 @@
+FTS for Debian
+==============
+
+Configuration hints:
+
+* Find the predefined configuration file with commented configuration keys.
+
+* Running as non-root user
+
+  FTS runs as root user - per default. You're encouraged to change this
+  behaviour by setting the DAEMON_USER variable in /etc/default/fts. If
+  you do this, take care about these topics:
+  
+   - Make sure the user owns the configure TFTP directory
+   - Make suer the user is able to read the static TFTP directory
+   - Modify your fuse.conf to include the "user_allow_other" keyword
+   - Make sure the user is in the fuse group
+
+
+Upgrading from 0.2:
+
+FTS 1.0 is a complete rewrite of the old Perl based service. Due to some
+major simplifications inside of the code, please use the generated
+/etc/fts/config file as a new base and complete the eventually needed
+credentials. Move away the old /etc/fts/fts.conf to get rid of the
+init.d warning.
