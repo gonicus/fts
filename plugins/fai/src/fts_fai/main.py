@@ -15,7 +15,6 @@ class FAIBoot(BootPlugin):
 
         self.ldap = LDAPHandler.get_instance()
         self.nfs_root= self.config.get('fai.nfs-root', '/srv/nfsroot')
-        self.nfs_opts= self.config.get('fai.nfs-opts', 'nfs4')
         self.fai_flags= self.config.get('fai.flags', 'verbose,sshd,syslogd,createvt,reboot')
         self.union= self.config.get('fai.union', 'unionfs')
         self.default_init= self.config.get('fai.default-init', 'fallback')
@@ -109,7 +108,7 @@ class FAIBoot(BootPlugin):
                         cmdline = cmdline.strip()
 
                     # Add NFS options
-                    cmdline = cmdline + " nfsroot=" + self.nfs_root + "," + self.nfs_opts
+                    cmdline = cmdline + " nfsroot=" + self.nfs_root
                     cmdline = cmdline.strip()
 
                     # Add FAI options

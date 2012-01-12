@@ -55,9 +55,6 @@ static-path =  /tftpboot/pxelinux.static
 ## Path to the NFS root which is served to FAI clients.
 #nfs-root = /srv/nfsroot
 #
-## Options for the NFS root mount.
-#nfs-opts = nfs4
-#
 ## FAI flags to use for the clients.
 #flags = verbose,sshd,syslogd,createvt,reboot
 #
