@@ -94,31 +94,18 @@ class FAIBoot(BootPlugin):
                     cmdline = re.sub(r'\s[\s]+', '', cmdline.strip())
 
                     # Get kernel and initrd from TFTP root
-
-                    # - extract kernel version
-                    kernel_version='install'
-                    if kernel.startswith('vmlinuz-'):
-                        kernel_version = kernel[8:]
-                    elif kernel.startswith('linux-image-'):
-                        kernel_version = kernel[12:]
+                    kernel='vmlinuz-install'
+                    initrd='initrd.img-install'
 
                     # - guess filename for kernel
                     if not os.access(self.tftp_root + os.sep + kernel, os.F_OK):
-                        # Try default kernel
-                        if os.access(self.tftp_root + os.sep + 'vmlinuz-' + kernel_version, os.F_OK):
-                            syslog.syslog(syslog.LOG_INFO, "[fai] {hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-{version}'".format(hostname=hostname, kernel=kernel, version=kernel_version))
-                            kernel = 'vmlinuz-' + kernel_version
-                        elif os.access(self.tftp_root + os.sep + 'vmlinuz-install', os.F_OK):
-                            syslog.syslog(syslog.LOG_INFO, "[fai] {hostname} - specified kernel {kernel} does not exist, using 'vmlinuz-install'".format(hostname=hostname, kernel=kernel))
-                            kernel = 'vmlinuz-install'
-                        else:
-                            syslog.syslog(syslog.LOG_ERR, "[fai] {hostname} - specified kernel {kernel} does not exist!".format(hostname=hostname, kernel=kernel))
-                            return None
+                        syslog.syslog(syslog.LOG_ERR, "[fai] {hostname} - specified kernel {kernel} does not exist!".format(hostname=hostname, kernel=kernel))
+                        return None
 
                     # - try to find the initrd
-                    path = self.tftp_root + os.sep + 'initrd.img-' + kernel_version
+                    path = self.tftp_root + os.sep + initrd
                     if os.access(path, os.F_OK):
-                        cmdline = cmdline + " initrd=initrd.img-" + kernel_version
+                        cmdline = cmdline + " initrd={initrd}".format(initrd=initrd)
                         cmdline = cmdline.strip()
 
                     # Add NFS options
