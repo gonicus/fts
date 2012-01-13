@@ -1,12 +1,14 @@
 # Copyright (C) 2010 Nobuhiro Iwamatsu <iwamatsu@debian.org>
-# This file is distributed under the 2-clause BSD license.
-# Nobuhiro Iwamatsu <iwamatsu@debian.org>, 2010.
+# This file is distributed under the same license as the fts
+# package.
+# Nobuhiro Iwamatsu <iwamatsu@debian.org>, 2010, 2012.
+
 msgid ""
 msgstr ""
-"Project-Id-Version: fts_0.1-4.2\n"
+"Project-Id-Version: fts_0.2-1\n"
 "Report-Msgid-Bugs-To: fts@packages.debian.org\n"
 "POT-Creation-Date: 2011-04-27 14:29+0200\n"
-"PO-Revision-Date: 2010-11-02 01:59+0900\n"
+"PO-Revision-Date: 2012-01-13 16:57+0900\n"
 "Last-Translator: Nobuhiro Iwamatsu <iwamatsu@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "Language: ja\n"
@@ -17,7 +19,6 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#, fuzzy
 #| msgid "Base directory for the tftp files:"
 msgid "Base directory for the TFTP files:"
 msgstr "tftp ファイルのベースディレクトリ:"
@@ -25,7 +26,6 @@ msgstr "tftp ファイルのベースディレクトリ:"
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#, fuzzy
 #| msgid ""
 #| "The config directory for tftp is where the pxelinux.0 image lies. This "
 #| "must be in sync with your TFTP Server"
@@ -34,5 +34,6 @@ msgid ""
 "usually contains the pxelinux.0 file. It has to be configured to the same "
 "value that is used by your TFTP server."
 msgstr ""
-"tftp の設定ディレクトリは、pxelinux.0 イメージファイルがある場所です。これは "
-"TFTP サーバと同期してなければなりません"
+"TFTP の設定ディレクトリには、通常 pxelinux.0 ファイルが含まれる場所で"
+"あることに注意してください。これには TFTP サーバーが用いるディレクトリ"
+"と同じ値を設定しなければなりません。"
