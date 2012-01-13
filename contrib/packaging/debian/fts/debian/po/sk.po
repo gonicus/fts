@@ -20,15 +20,20 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#| msgid "Base directory for the tftp-daemon:"
 msgid "Base directory for the TFTP files:"
 msgstr "Základný adresár pre súbory TFTP:"
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-msgid "Please note that the configuration directory for TFTP is the one that usually contains the pxelinux.0 file. It has to be configured to the same value that is used by your TFTP server."
-msgstr "Prosím, pamätajte, že konfiguračný adresár pre TFTP je ten, ktorý zvyčajne obsahuje súbor pxelinux.0. Je potrebné nastaviť ho na rovnakú hodnotu ako používa váš server TFTP."
+msgid ""
+"Please note that the configuration directory for TFTP is the one that "
+"usually contains the pxelinux.0 file. It has to be configured to the same "
+"value that is used by your TFTP server."
+msgstr ""
+"Prosím, pamätajte, že konfiguračný adresár pre TFTP je ten, ktorý zvyčajne "
+"obsahuje súbor pxelinux.0. Je potrebné nastaviť ho na rovnakú hodnotu ako "
+"používa váš server TFTP."
 
 #~ msgid ""
 #~ "The base directory for TFTP is the root dir for served files. The default "
@@ -36,4 +41,3 @@ msgstr "Prosím, pamätajte, že konfiguračný adresár pre TFTP je ten, ktorý
 #~ msgstr ""
 #~ "Základný adresár pre TFTP je koreňový adresár ponúkaných súborov. "
 #~ "Predvolená hodnota by mala vyhovovať každému."
-

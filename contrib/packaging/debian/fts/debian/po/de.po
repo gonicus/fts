@@ -19,21 +19,17 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#| msgid "Base directory for the tftp files:"
 msgid "Base directory for the TFTP files:"
 msgstr "Basis-Verzeichnis für die TFTP-Dateien:"
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#| msgid ""
-#| "The config directory for tftp is where the pxelinux.0 image lies. This "
-#| "must be in sync with your TFTP Server"
 msgid ""
 "Please note that the configuration directory for TFTP is the one that "
 "usually contains the pxelinux.0 file. It has to be configured to the same "
 "value that is used by your TFTP server."
 msgstr ""
 "Das TFTP-Konfigurationsverzeichnis ist in der Regel das Verzeichnis welches "
-"die Datei pxelinux.0 enthält. Dieser Wert muss mit dem Konfigurationsverzeichnis "
-"Ihres TFTP-Servers übereinstimmen."
+"die Datei pxelinux.0 enthält. Dieser Wert muss mit dem "
+"Konfigurationsverzeichnis Ihres TFTP-Servers übereinstimmen."

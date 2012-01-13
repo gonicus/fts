@@ -21,16 +21,12 @@ msgstr ""
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#| msgid "Base directory for the tftp files:"
 msgid "Base directory for the TFTP files:"
 msgstr "tftp 文件的基目录："
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#| msgid ""
-#| "The config directory for tftp is where the pxelinux.0 image lies. This "
-#| "must be in sync with your TFTP Server"
 msgid ""
 "Please note that the configuration directory for TFTP is the one that "
 "usually contains the pxelinux.0 file. It has to be configured to the same "

@@ -1,14 +1,14 @@
 # Debconf translations for fts.
 # Copyright (C) 2010 THE fts'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the fts package.
-# Adriano Rafael Gomes <adrianorg@gmail.com>, 2010.
+# Adriano Rafael Gomes <adrianorg@gmail.com>, 2010, 2011, 2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: fts 0.1-4\n"
+"Project-Id-Version: fts 0.2-1.1\n"
 "Report-Msgid-Bugs-To: fts@packages.debian.org\n"
 "POT-Creation-Date: 2011-04-27 14:29+0200\n"
-"PO-Revision-Date: 2010-10-02 13:12-0300\n"
+"PO-Revision-Date: 2012-01-05 01:20-0200\n"
 "Last-Translator: Adriano Rafael Gomes <adrianorg@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <debian-l10n-portuguese@lists.debian."
 "org>\n"
@@ -16,27 +16,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"pt_BR utf-8\n"
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#, fuzzy
-#| msgid "Base directory for the tftp files:"
 msgid "Base directory for the TFTP files:"
-msgstr "Diretório base para os arquivos tftp:"
+msgstr "Diretório base para os arquivos TFTP:"
 
 #. Type: string
 #. Description
 #: ../fts.templates:1001
-#, fuzzy
-#| msgid ""
-#| "The config directory for tftp is where the pxelinux.0 image lies. This "
-#| "must be in sync with your TFTP Server"
 msgid ""
 "Please note that the configuration directory for TFTP is the one that "
 "usually contains the pxelinux.0 file. It has to be configured to the same "
 "value that is used by your TFTP server."
 msgstr ""
-"O diretório de configuração para o tftp é onde fica a imagem pxelinux.0. "
-"Isso deve estar em sincronia com o seu Servidor TFTP"
+"Por favor, note que o diretório de configuração para o TFTP é aquele que "
+"geralmente contém o arquivo pxelinux.0. Ele deve ser configurado para o "
+"mesmo valor que é usado pelo seu servidor TFTP."

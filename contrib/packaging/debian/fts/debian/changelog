@@ -16,6 +16,7 @@ fts (0.9-1) unstable; urgency=low
     - Danish (Joe Dalton). Closes: #654301
     - Dutch (Jeroen Schot). Closes: #654369
     - Brazilian Portuguese (Adriano Rafael Gomes). Closes: #655120
+    - Japanese (Nobuhiro Iwamatsu). Closes: #655686
 
  -- Cajus Pollmeier <cajus@debian.org>  Mon, 09 Jan 2012 07:48:48 +0100
 
