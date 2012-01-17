@@ -1,21 +1,30 @@
 # -*- coding: utf-8 -*-
+import syslog
 from fts.bootplugin import BootPlugin
 from fts.jsonrpc_proxy import JSONServiceProxy
 
 
 class OPSIBoot(BootPlugin):
 
+    enabled = False
+
     def __init__(self):
         super(OPSIBoot, self).__init__()
 
         self.proxy_url = self.config.get('opsi.proxy')
         if not self.proxy_url:
-            raise RuntimeError("no opsi.proxy defined - bailing out")
+            syslog.syslog(syslog.LOG_ERR, "no opsi.proxy defined - disabling module")
+            return
+
+        self.enabled = True
 
         self.append = self.config.get('opsi.append', "noapic ramdisk_size=175112 init=/etc/init initrd=opsi-root.gz reboot=b video=vesa:ywrap,mtrr vga=791 quiet splash")
         self.lang = self.config.get('opsi.language', 'en')
 
     def getBootParams(self, address):
+        if not self.enabled:
+            return None
+
         proxy = JSONServiceProxy(self.proxy_url, mode='GET')
 
         status= "localboot"

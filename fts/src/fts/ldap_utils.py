@@ -4,6 +4,7 @@ import ldapurl
 import ldap.sasl
 import types
 import logging
+import sys
 from fts import Config
 from contextlib import contextmanager
 
@@ -51,7 +52,12 @@ class LDAPHandler(object):
 
         # Sanity check
         if self.__bind_user and not ldap.SASL_AVAIL:
-            raise Exception("bind_user needs SASL support, which doesn't seem to be available in python-ldap")
+            self.log.error("bind_user needs SASL support, which doesn't seem to be available in python-ldap")
+            sys.exit(1)
+
+        if not self.__url:
+            self.log.error("there is no 'url' specified in the 'ldap' section of the configuration file")
+            sys.exit(1)
 
         # Initialize static pool
         LDAPHandler.connection_handle = [None] * self.__pool
