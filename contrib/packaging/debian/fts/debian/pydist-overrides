@@ -1,2 +1,3 @@
 fts fts
 clacks.common clacks-common
+python_ldap python-ldap
