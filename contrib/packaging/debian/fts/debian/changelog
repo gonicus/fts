@@ -1,3 +1,9 @@
+fts (1.0-2) unstable; urgency=low
+
+  * Corrected section to match the old original.
+
+ -- Cajus Pollmeier <cajus@debian.org>  Tue, 17 Jan 2012 11:47:47 +0100
+
 fts (1.0-1) unstable; urgency=low
 
   [Cajus Pollmeier]
