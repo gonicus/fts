@@ -1,6 +1,7 @@
 fts (1.0-2) unstable; urgency=low
 
   * Corrected section to match the old original.
+  * Added dependency for ucf. Closes: #656315
 
  -- Cajus Pollmeier <cajus@debian.org>  Tue, 17 Jan 2012 11:47:47 +0100
 
