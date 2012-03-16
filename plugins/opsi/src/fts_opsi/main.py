@@ -47,6 +47,12 @@ class OPSIBoot(BootPlugin):
         if status == "install":
             params = []
 
+            # append short hostname
+            params.append("hn=%s" % client_id.split('.', 1)[0])
+
+            # Set product
+            params.append(product)
+
             # Load pc key
             pc_key = proxy.getOpsiHostKey(client_id)
             if pc_key:
