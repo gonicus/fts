@@ -20,6 +20,23 @@ class OPSIBoot(BootPlugin):
 
         self.append = self.config.get('opsi.append', "noapic ramdisk_size=175112 init=/etc/init initrd=opsi-root.gz reboot=b video=vesa:ywrap,mtrr vga=791 quiet splash")
         self.lang = self.config.get('opsi.language', 'en')
+        self.force_hostname = self.config.get('opsi.force_hostname', True)
+        if self.force_hostname.lower() in ['yes', '1', 'true', 'on']:
+            self.force_hostname = True
+        elif self.force_hostname.lower() in ['no', '0', 'false', 'off']:
+            self.force_hostname = False
+        else:
+            syslog.syslog(syslog.LOG_ERR, "Parse error: Option '{option}', given value '{value}' is invalid!".format(option='opsi.force_hostname', value=self.force_hostname))
+            return
+
+        self.force_domain = self.config.get('opsi.force_domain', False)
+        if self.force_domain.lower() in ['yes', '1', 'true', 'on']:
+            self.force_domain = True
+        elif self.force_domain.lower() in ['no', '0', 'false', 'off']:
+            self.force_domain = False
+        else:
+            syslog.syslog(syslog.LOG_ERR, "Parse error: Option '{option}', given value '{value}' is invalid!".format(option='opsi.force_domain', value=self.force_domain))
+            return
 
     def getBootParams(self, address):
         if not self.enabled:
@@ -48,7 +65,12 @@ class OPSIBoot(BootPlugin):
             params = []
 
             # append short hostname
-            params.append("hn=%s" % client_id.split('.', 1)[0])
+            if self.force_hostname:
+                params.append("hn=%s" % client_id.split('.', 1)[0])
+
+            # append domain
+            if self.force_domain:
+                params.append("dn=%s" % client_id.split('.', 1)[1])
 
             # Set product
             params.append(product)
