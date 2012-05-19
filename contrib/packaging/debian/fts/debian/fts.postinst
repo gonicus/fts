@@ -30,9 +30,9 @@ case "$1" in
 	[ ! -d "$tftppath/pxelinux.static" ] && mkdir -p "$tftppath/pxelinux.static"
 
 	# Create a safe default file
-	if [ ! -f "$tftppath/pxelinux.static/default" ]; then
-	 	echo "localboot 0" > "$tftppath/pxelinux.static/default"
-	fi
+	#if [ ! -f "$tftppath/pxelinux.static/default" ]; then
+	# 	echo "localboot 0" > "$tftppath/pxelinux.static/default"
+	#fi
 
 	# Apply to config
 	sed -e "s~^path\s*=\s*/.*$~path = $tftppath/pxelinux.cfg~" \

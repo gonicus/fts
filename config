@@ -48,6 +48,12 @@ static-path =  /tftpboot/pxelinux.static
 #
 ## Default language to use in the installation environment.
 #language = en
+#
+## Force hostname from opsi config backend, overrides dns (default: True)
+#force_hostname = True
+#
+## Force domainname from opsi config backend, overrides dns (default: False)
+#force_domain = False
 
 
 #[fai]
