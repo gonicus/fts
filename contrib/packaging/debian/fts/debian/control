@@ -11,7 +11,7 @@ Vcs-Git: git://github.com/clacks/fts.git
 
 Package: fts
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}, python-fuse, fuse, python-argparse, ucf
+Depends: ${python:Depends}, ${misc:Depends}, python-fuse, fuse, python-argparse, ucf, python-pkg-resources
 Recommends: tftpd | atftpd | tftpd-hpa
 Description: Modular TFTP/Fuse supplicant
  FTS is a modular fuse-tftp-supplicant which allows to create

@@ -1,6 +1,8 @@
-fts (1.0-3) unstable; urgency=low
+fts (1.1-1) unstable; urgency=low
 
-  * Fixes policy violations found by puiparts. Closes: #656439
+  * New upstream release.
+  * Fixes policy violations found by puiparts. Closes: #656439.
+  * Add missing dependency for pkg-resources. Closes: #672917.
 
  -- Cajus Pollmeier <cajus@debian.org>  Tue, 07 Feb 2012 11:35:37 +0100
 
