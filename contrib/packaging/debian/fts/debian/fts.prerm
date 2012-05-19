@@ -8,8 +8,19 @@ if [ "$1" = "purge" ] ; then
     deluser --quiet --system tftpd > /dev/null || true
     delgroup --quiet --system tftpd > /dev/null || true
 
+    # Remove configuration file
+    rm /etc/fts/config
     if [ -d "/etc/fts" ]; then
         rmdir "$f" || { chown root:root "$f" && chmod 00700 "$f"; }
     fi
-fi
 
+    # See if there's some stuff that is not created by us
+    . /usr/share/debconf/confmodule
+    db_version 2.0
+    db_get "fts/tftppath"
+    tftppath="$RET"
+
+    #default
+    rmdir "$tftppath/pxelinux.cfg" || true
+    rmdir "$tftppath/pxelinux.static" || true
+fi
