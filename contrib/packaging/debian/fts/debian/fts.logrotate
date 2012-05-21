@@ -2,10 +2,11 @@
     daily
     missingok
     rotate 10
+    create 640 root adm
     compress
     delaycompress
     notifempty
     postrotate
         invoke-rc.d rsyslog rotate > /dev/null
-    create 640 root adm
+    endscript
 }
