@@ -2,4 +2,4 @@ usr/bin/fts usr/sbin
 usr/lib/python*/dist-packages/fts
 usr/lib/python*/dist-packages/fts-*.egg-info
 ../rsyslog/fts.conf /etc/rsyslog.d
-../../config /etc/fts/config
+../../config /etc/fts
