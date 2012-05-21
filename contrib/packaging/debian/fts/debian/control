@@ -14,7 +14,7 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, python-fuse, fuse, python-argparse, ucf, python-pkg-resources
 Recommends: tftpd | atftpd | tftpd-hpa
 Description: Modular TFTP/Fuse supplicant
- FTS is a modular fuse-tftp-supplicant which allows to create
+ FTS is a modular fuse-tftp-supplicant which allows one to create
  pxelinux configurations for different types of clients
  using external modules on the fly.
  . 
@@ -28,7 +28,7 @@ Package: fts-fai-ldap
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
 Description: LDAP FAI module for the TFTP/Fuse supplicant
- FTS is a modular fuse-tftp-supplicant which allows to create 
+ FTS is a modular fuse-tftp-supplicant which allows one to create 
  pxelinux configurations for different types of clients
  using external modules on the fly.
  .
@@ -41,7 +41,7 @@ Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, fts
 Recommends: clacks-common
 Description: Clacks module for the TFTP/Fuse supplicant
- FTS is a modular fuse-tftp-supplicant which allows to create 
+ FTS is a modular fuse-tftp-supplicant which allows one to create 
  pxelinux configurations for different types of clients
  using external modules on the fly.
  .
@@ -51,7 +51,7 @@ Package: fts-ltsp-ldap
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
 Description: LDAP LTSP module for the TFTP/Fuse supplicant
- FTS is a modular fuse-tftp-supplicant which allows to create 
+ FTS is a modular fuse-tftp-supplicant which allows one to create 
  pxelinux configurations for different types of clients
  using external modules on the fly.
  .
@@ -63,7 +63,7 @@ Package: fts-opsi
 Architecture: all
 Depends: ${python:Depends}, ${misc:Depends}, fts, python-ldap
 Description: LDAP LTSP module for the TFTP/Fuse supplicant
- FTS is a modular fuse-tftp-supplicant which allows to create 
+ FTS is a modular fuse-tftp-supplicant which allows one to create 
  pxelinux configurations for different types of clients
  using external modules on the fly.
  .
